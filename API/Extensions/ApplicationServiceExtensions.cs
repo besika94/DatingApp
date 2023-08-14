@@ -11,7 +11,8 @@ namespace API.Extensions
         {
             // Register the TokenService class as a service with the ITokenService interface.
             services.AddScoped<ITokenService, TokenService>();
-
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             // Register the DataContext class as a DbContext service, providing a SQLite connection string.
             services.AddDbContext<DataContext>(opt =>
             {
