@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
 
@@ -19,8 +19,7 @@ export class AccountService {
       tap((res: User) => {
         const user = res;
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUseer(user);
         }
       })
     );
@@ -30,14 +29,14 @@ export class AccountService {
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
       tap((user) => {
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUseer(user);
         }
       })
     );
   }
 
   setCurrentUseer(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 

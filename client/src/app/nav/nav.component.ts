@@ -11,11 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class NavComponent implements OnInit {
   model: any = {};
 
-  constructor(
-    public accService: AccountService,
-    private router: Router,
-    private toaster: ToastrService
-  ) {}
+  constructor(public accService: AccountService, private router: Router) {}
 
   ngOnInit(): void {}
 
