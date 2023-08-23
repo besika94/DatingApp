@@ -22,7 +22,8 @@ namespace API.Services
             var claims = new List<Claim>
             {
                  // Add a claim representing the user's username as a "NameId" claim.
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
             };
 
             // Create signing credentials for the token using a cryptographic key and the HMACSHA512 signature algorithm.
