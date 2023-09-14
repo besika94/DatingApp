@@ -5,7 +5,7 @@
 namespace API.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class LikedEntityAdded : Migration
+    public partial class AddedLikedEntity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,15 +19,15 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_likes", x => new { x.SourceUserId, x.TargetUserId });
+                    table.PrimaryKey("PK_Likes", x => new { x.SourceUserId, x.TargetUserId });
                     table.ForeignKey(
-                        name: "FK_likes_Users_SourceUserId",
+                        name: "FK_Likes_Users_SourceUserId",
                         column: x => x.SourceUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_likes_Users_TargetUserId",
+                        name: "FK_Likes_Users_TargetUserId",
                         column: x => x.TargetUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -35,8 +35,8 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_likes_TargetUserId",
-                table: "likes",
+                name: "IX_Likes_TargetUserId",
+                table: "Likes",
                 column: "TargetUserId");
         }
 
@@ -44,7 +44,7 @@ namespace API.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "likes");
+                name: "Likes");
         }
     }
 }

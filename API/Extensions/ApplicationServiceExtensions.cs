@@ -17,6 +17,7 @@ namespace API.Extensions
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<LogUserActivity>();
             services.AddScoped<ILikesRepository, LikesRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
             // Register the DataContext class as a DbContext service, providing a SQLite connection string.
             services.AddDbContext<DataContext>(opt =>
             {
